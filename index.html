@@ -13975,6 +13975,7 @@ a.anchor-link {
 有一个强制休息时间，希望能增加和延长玩家对游戏的热情度</p>
 <p>为了确定在第几级的时候放出弹窗，我们需要做一个AB测试。弹窗首先被放倒30级，我们想用AB测试来分析如果将弹窗从30级移到40级对用户留存率有什么影响，以此来决定是否要将窗口
 从30级移到40级。</p>
+<p>将30级跳出弹窗的用户设为控制组，40级跳出弹窗的用户设为对照组</p>
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
@@ -14326,10 +14327,6 @@ a.anchor-link {
 
 <span class="c1"># Adding a column with the % difference between the two AB-groups</span>
 <span class="n">boot_7d</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">boot_7d</span><span class="p">[</span><span class="s1">&#39;gate_30&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">boot_7d</span><span class="p">[</span><span class="s1">&#39;gate_40&#39;</span><span class="p">])</span> <span class="o">/</span>  <span class="n">boot_7d</span><span class="p">[</span><span class="s1">&#39;gate_30&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
-
-<span class="c1"># Ploting the bootstrap % difference</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">boot_7d</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;kde&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">% d</span><span class="s2">ifference in means&quot;</span><span class="p">)</span>
 
 <span class="c1"># Calculating the probability that 7-day retention is greater when the gate is at level 30</span>
 <span class="n">prob</span> <span class="o">=</span> <span class="p">(</span><span class="n">boot_7d</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">boot_7d</span><span class="p">)</span>
